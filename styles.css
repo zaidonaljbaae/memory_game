@@ -51,3 +51,32 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+/* Style for the start button */
+#start-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for the start button */
+#start-btn:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+/* Active effect for the start button */
+#start-btn:active {
+  background-color: #367C39; /* Dark green */
+}
+
+/* Positioning the start button */
+#start-btn {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 10px;
+}
