@@ -8,6 +8,7 @@ var started = false;
 function startGame() {
     if (!started) {
         started = true;
+        $("#start-btn").hide(); // Hide the start button
         nextSequence();
         $("body").removeClass("game-over");
         $("#level-title").text("Level " + level);
@@ -31,14 +32,15 @@ function nextSequence() {
     });
 }
 
-
 // Function to handle button click
 $(".btn").click(function() {
-    var userChosenColour = $(this).attr("id");
-    userClickedPattern.push(userChosenColour);
-    animatePress(userChosenColour);
-    playSound(userChosenColour);
-    checkAnswer(userClickedPattern.length - 1);
+    if (started) {
+        var userChosenColour = $(this).attr("id");
+        userClickedPattern.push(userChosenColour);
+        animatePress(userChosenColour);
+        playSound(userChosenColour);
+        checkAnswer(userClickedPattern.length - 1);
+    }
 });
 
 // Function to check the user's answer
@@ -62,6 +64,7 @@ function gameOver() {
     started = false;
     level = 0;
     gamePattern = [];
+    $("#start-btn").show(); // Show the start button
 }
 
 // Function to animate button press
@@ -78,5 +81,8 @@ function playSound(name) {
     audio.play();
 }
 
-// Event listener to start the game
+// Event listener to start the game when the start button is clicked
+$("#start-btn").click(startGame);
+
+// Event listener to start the game when any key is pressed
 $(document).keydown(startGame);
